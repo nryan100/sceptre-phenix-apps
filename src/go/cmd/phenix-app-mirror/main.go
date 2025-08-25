@@ -116,7 +116,7 @@ func configure(exp *types.Experiment) error {
 		return fmt.Errorf("extracting app metadata: %w", err)
 	}
 	amd.Init()
-	if amd.MirrorBridge != exp.Spec.DefaultBridge() {
+	if amd.MirrorBridge != "" {
 		amd.MirrorBridge = exp.Spec.DefaultBridge()
 	}
 
@@ -253,7 +253,7 @@ func postStart(exp *types.Experiment, dryrun bool) (ferr error) {
 		return fmt.Errorf("extracting app metadata: %w", err)
 	}
 	amd.Init()
-	if amd.MirrorBridge != exp.Spec.DefaultBridge() {
+	if amd.MirrorBridge != "" {
 		amd.MirrorBridge = exp.Spec.DefaultBridge()
 	}
 
@@ -490,7 +490,7 @@ func cleanup(exp *types.Experiment, dryrun bool) error {
 		return fmt.Errorf("extracting app metadata: %w", err)
 	}
 	amd.Init()
-	if amd.MirrorBridge != exp.Spec.DefaultBridge() {
+	if amd.MirrorBridge != "" {
 		amd.MirrorBridge = exp.Spec.DefaultBridge()
 	}
 
