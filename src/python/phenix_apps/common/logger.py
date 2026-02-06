@@ -34,3 +34,12 @@ def log(level: Literal['DEBUG', 'INFO', 'WARNING', 'ERROR'] , msg: str) -> None:
         # add handler to phenix logger
         logger.handlers[:] = [handler]
     logger.log(getattr(logging, level.upper()), msg)
+
+def info(msg: str) -> None:
+    log("INFO", msg)
+
+def debug(msg: str) -> None:
+    log("DEBUG", msg)
+
+def error(msg: str) -> None:
+    log("ERROR", msg)
