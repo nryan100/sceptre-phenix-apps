@@ -8,7 +8,7 @@ from typing import Any
 from box import Box
 
 from phenix_apps.common import utils
-from phenix_apps.common.logger import configure_logging, logger
+from phenix_apps.common.logger import logger
 
 
 class AppBase:
@@ -64,7 +64,6 @@ class AppBase:
         dryrun = args.dry_run or os.getenv("PHENIX_DRYRUN", "false") == "true"
 
         # Configure logger. In dry-run mode, force console output.
-        configure_logging(force_console=dryrun)
 
         app = cls(name, args.stage, dryrun)
         app.execute_stage()
