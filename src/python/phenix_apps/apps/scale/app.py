@@ -15,7 +15,18 @@ from phenix_apps.apps import AppBase
 from phenix_apps.apps.scale.interface import ScalePlugin
 from phenix_apps.apps.scale.registry import PLUGIN_REGISTRY, get_plugin
 from phenix_apps.common import settings, utils
-from phenix_apps.common.logger import logger
+# from phenix_apps.common.logger import logger
+
+# HACK - workaround for broken logging -----------------------------------------------
+import logging
+logger = logging.getLogger('tmp')
+logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler('/var/log/phenix/scale-app-main.log')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+file_handler.setLevel(logging.DEBUG)
+logger.addHandler(file_handler)
+# ------------------------------------------------------------------------------------
 
 
 class Scale(AppBase):
